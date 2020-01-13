@@ -11,9 +11,12 @@ import {
   EditButton,
   EmailField,
   SimpleForm,
-  TextInput,
+    TextInput,
+    NumberInput,
+    ImageInput,
+    ImageField,
   ReferenceInput,
-  SelectInput,
+    SelectInput,
   Create,
   Edit,
     Pagination,
@@ -27,8 +30,16 @@ const QuestionTitle = ({ record }) => (
 export const QuestionsCreate = (props) => (
   <Create title={<QuestionTitle />} {...props}>
       <SimpleForm>
+          <ReferenceInput
+                label="Questionnaire"
+                source="QuestionnaireId"
+                reference="questionnaires"
+                filterToQuery={searchText => ({ title: searchText })}
+            >
+                <SelectInput optionText="title" optionValue="id"/>
+            </ReferenceInput>
           <TextInput source="title" />
-          <BooleanInput source="uploadFormat" />
+          <BooleanInput source="uploadFormat" defaultValue="true"/>
       </SimpleForm>
   </Create>
 );
@@ -46,19 +57,28 @@ export const QuestionsList = props => {
   );
 };
 
-export const QuestionsEdit = props => (
-  <Edit title={<QuestionTitle />} {...props}>
-    <SimpleForm>
-        <TextInput source="title" />
-        <BooleanInput source="uploadFormat" />
-        <FormDataConsumer>
-            {({ formData }) =>
-                !formData.uploadFormat && (
-                    <p>Test</p>
-                )
-            }
-        </FormDataConsumer>
-    </SimpleForm>
-  </Edit>
-);
+export const QuestionsEdit = props => {
+    return (
+        <Edit title={<QuestionTitle />} {...props}>
+            <SimpleForm>
+                <TextInput source="title" />
+                <BooleanInput source="uploadFormat" />
+                <FormDataConsumer>
+                    {({ formData }) =>
+                        !formData.uploadFormat && (
+                            <ReferenceInput
+                                source="id"
+                                reference="questionnaires"
+                            >
+                                <ImageInput source="images_url" multiple={true} label="Related pictures" accept="image/*" placeholder={<p>Drop your file here</p>}>
+                                    <ImageField source="src" title="title" />
+                                </ImageInput>
+                            </ReferenceInput>
+                        )
+                    }
+                </FormDataConsumer>
+            </SimpleForm>
+            </Edit>
+        )
+};
 

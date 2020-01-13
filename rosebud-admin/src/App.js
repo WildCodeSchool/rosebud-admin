@@ -3,6 +3,7 @@ import {fetchUtils, Admin, Resource } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
 import { QuestionnairesList, QuestionnairesEdit, QuestionnairesCreate } from './Questionnaire';
 import { QuestionsList, QuestionsEdit, QuestionsCreate } from './Question';
+import { ImagesList, ImagesEdit, ImagesCreate } from './Image';
 import authProvider from "./authProvider";
 
 const httpClient = (url, options = {}) => {
@@ -21,7 +22,8 @@ class App extends Component {
         authProvider={authProvider}
       >
         <Resource name="questionnaires" create={QuestionnairesCreate} list={QuestionnairesList} edit={QuestionnairesEdit}  />
-        <Resource name="questions" create={QuestionsCreate} list={QuestionsList} edit={QuestionsEdit}  />
+        <Resource name="questions" create={QuestionsCreate} list={QuestionsList} edit={QuestionsEdit} />
+        <Resource name="images" create={ImagesCreate} list={ImagesList} edit={ImagesEdit}  />
       </Admin>
     );
   }
