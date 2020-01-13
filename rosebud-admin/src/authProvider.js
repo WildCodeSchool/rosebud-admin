@@ -2,7 +2,7 @@
 
 const authProvider = {
     login: ({ username, password }) =>  {
-        const request = new Request('/api/v1/admin/login', {
+        const request = new Request('/api/back/v1/admin/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),

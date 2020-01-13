@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <Admin
-        dataProvider={jsonServerProvider("/api/v1", httpClient)}
+        dataProvider={jsonServerProvider("/api/back/v1", httpClient)}
         authProvider={authProvider}
       >
         <Resource name="questionnaires" create={QuestionnairesCreate} list={QuestionnairesList} edit={QuestionnairesEdit}  />
