@@ -20,6 +20,16 @@ import {
 const QuestionnaireTitle = ({ record }) => (
   <span> {record ? `"${record.title}"` : ""}</span>
 );
+
+export const QuestionnairesCreate = (props) => (
+  <Create title={<QuestionnaireTitle />} {...props}>
+      <SimpleForm>
+          <TextInput source="title" />
+          <TextInput source="description_participate"/>
+          <TextInput source="description_consult"/>
+      </SimpleForm>
+  </Create>
+);
 export const QuestionnairesList = props => {
   return (
     <List {...props}>

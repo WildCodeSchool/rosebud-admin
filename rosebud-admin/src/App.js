@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {fetchUtils, Admin, Resource } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
-import { QuestionnairesList, QuestionnairesEdit } from './Questionnaire';
+import { QuestionnairesList, QuestionnairesEdit, QuestionnairesCreate } from './Questionnaire';
 import authProvider from "./authProvider";
 
 const httpClient = (url, options = {}) => {
@@ -17,9 +17,9 @@ class App extends Component {
     return (
       <Admin
         dataProvider={jsonServerProvider("/api/v1", httpClient)}
-       // authProvider={authProvider}
+        authProvider={authProvider}
       >
-        <Resource name="questionnaires" list={QuestionnairesList} edit={QuestionnairesEdit} />
+        <Resource name="questionnaires" create={QuestionnairesCreate} list={QuestionnairesList} edit={QuestionnairesEdit}  />
       </Admin>
     );
   }
