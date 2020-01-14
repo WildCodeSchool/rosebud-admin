@@ -1,26 +1,20 @@
 import React from "react";
-import { useMediaQuery } from "@material-ui/core";
 import {
-  Filter,
   List,
-  SimpleList,
   Datagrid,
   TextField,
   BooleanField,
   BooleanInput,
   EditButton,
-  EmailField,
   SimpleForm,
-    TextInput,
-    NumberInput,
-    ImageInput,
-    ImageField,
+  TextInput,
+  ImageInput,
+  ImageField,
   ReferenceInput,
-    SelectInput,
+  SelectInput,
   Create,
   Edit,
-    Pagination,
-    FormDataConsumer
+  FormDataConsumer
 } from "react-admin";
 
 const QuestionTitle = ({ record }) => (
@@ -38,11 +32,12 @@ export const QuestionsCreate = (props) => (
             >
                 <SelectInput optionText="title" optionValue="id"/>
             </ReferenceInput>
-          <TextInput source="title" />
+          <TextInput source="title" autoComplete="off" />
           <BooleanInput source="uploadFormat" defaultValue="true"/>
       </SimpleForm>
   </Create>
 );
+
 export const QuestionsList = props => {
   return (
     <List {...props}>
@@ -61,7 +56,7 @@ export const QuestionsEdit = props => {
     return (
         <Edit title={<QuestionTitle />} {...props}>
             <SimpleForm>
-                <TextInput source="title" />
+                <TextInput source="title" autoComplete="off" />
                 <BooleanInput source="uploadFormat" />
                 <FormDataConsumer>
                     {({ formData }) =>
@@ -81,4 +76,3 @@ export const QuestionsEdit = props => {
             </Edit>
         )
 };
-
