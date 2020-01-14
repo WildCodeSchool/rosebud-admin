@@ -19,7 +19,7 @@ export const UsersCreate = (props) => (
       <SimpleForm>
           <TextInput source="username"  autoComplete="off" />
           <TextInput source="email" autoComplete="off" />
-          <TextInput source="password" autoComplete="off" value="" />
+          <TextInput source="password" autoComplete="off" type="password"/>
       </SimpleForm>
   </Create>
 );
@@ -42,7 +42,7 @@ export const UsersEdit = props => (
     <SimpleForm>
         <TextInput source="username"  autoComplete="off" />
         <TextInput source="email" autoComplete="off" />
-        <TextInput source="password" autoComplete="off" value="" />
+        <TextInput source="password" autoComplete="off"  type="password" />
     </SimpleForm>
   </Edit>
 );
