@@ -14,23 +14,27 @@ import {
   SelectInput,
   Create,
   Edit,
-  Pagination
+  Pagination,
+  DateInput
 } from "react-admin";
 
 const QuestionnaireTitle = ({ record }) => (
-  <span> {record ? `"${record.title}"` : ""}</span>
+  console.log(record),
+  
+  <span> {' '} {record ? `Modifier le Questionnaire "${record.title}"` : ""}</span>
 );
 
 export const QuestionnairesCreate = (props) => (
-  <Create title={<QuestionnaireTitle />} {...props}>
+  <Create title={"Creer un nouveaux Questionnaire"} {...props}>
       <SimpleForm>
           <TextInput source="title" />
           <TextInput source="description_participate"/>
           <TextInput source="description_consult"/>
+          <DateInput label="Publication date" source="createdAt" defaultValue={new Date()} />
       </SimpleForm>
   </Create>
 );
-export const QuestionnairesList = props => {
+export const QuestionnairesList = (props) => {
   return (
     <List {...props}>
       <Datagrid>
@@ -43,7 +47,7 @@ export const QuestionnairesList = props => {
     </List>
   );
 };
-export const QuestionnairesEdit = props => (
+export const QuestionnairesEdit = (props) => (
   <Edit title={<QuestionnaireTitle />} {...props}>
     <SimpleForm>
       <TextInput source="title" />

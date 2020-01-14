@@ -1,5 +1,4 @@
 
-
 const authProvider = {
     login: ({ username, password }) =>  {
         const request = new Request('/api/back/v1/admin/login', {
