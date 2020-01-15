@@ -4,7 +4,7 @@ import jsonServerProvider from "ra-data-json-server";
 import { QuestionnairesList, QuestionnairesEdit, QuestionnairesCreate } from './Questionnaire';
 import { QuestionsList, QuestionsEdit, QuestionsCreate } from './Question';
 import { ImagesList, ImagesEdit, ImagesCreate } from './Image';
-import { UsersList, UsersEdit, UsersCreate } from './User';
+import { AnswersList, AnswersEdit } from './Answer';
 import authProvider from "./authProvider";
 
 const httpClient = (url, options = {}) => {
@@ -26,6 +26,7 @@ class App extends Component {
         <Resource name="questionnaires" create={QuestionnairesCreate} list={QuestionnairesList} edit={QuestionnairesEdit}  />
         <Resource name="questions" create={QuestionsCreate} list={QuestionsList} edit={QuestionsEdit} />
         <Resource name="images" create={ImagesCreate} list={ImagesList} edit={ImagesEdit} />
+        <Resource name="answers" list={AnswersList} edit={AnswersEdit} />
         <Resource name="users" />
       </Admin>
     );
