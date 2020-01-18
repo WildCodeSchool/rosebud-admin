@@ -10,11 +10,11 @@ const styles = {
   }
 };
 
-const AddImageButton = ({ classes, record }) => (
+const AddImageButton = ({ classes, record, questionnaireId }) => (
   <Button
     className={classes.button}
     component={Link}
-    to={`/images/create?QuestionId=${record.id}`}
+    to={`/images/create?QuestionId=${record.id}&QuestionnaireId=${questionnaireId}`}
     label="Ajouter une image"
     title="Ajouter une image"
   >

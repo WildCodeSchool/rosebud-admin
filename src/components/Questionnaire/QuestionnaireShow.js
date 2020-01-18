@@ -64,7 +64,7 @@ return (
               <TextField label={false} source="title" />
               <BooleanField label="Upload" source="uploadFormat" />
               <FormDataConsumer>
-              {({ record }) => record.uploadFormat ? "" : <ShowImagesButton QuestionId={record.id} />}
+              {({ record }) => record.uploadFormat ? "" : <ShowImagesButton QuestionId={record.id} questionnaireId={props.id} />}
               </FormDataConsumer>
               <EditQuestionButton path={props.location.pathname} />
               <DeleteButton undoable={false} redirect="" />

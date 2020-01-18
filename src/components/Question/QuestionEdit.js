@@ -19,7 +19,7 @@ const QuestionEdit = props => {
   const redirect = QuestionnaireId ? `/questionnaires/${QuestionnaireId}/show/questions` : false;
 
   return (
-    <Edit  {...props} actions={<TopToolbar><BackButton link={`/questionnaires/${QuestionnaireId}/show/questions`} title="Annuler"/></TopToolbar>}>
+    <Edit  {...props} actions={<TopToolbar><BackButton link={redirect} title="Annuler"/></TopToolbar>}>
       <SimpleForm
         redirect={redirect}
       >
@@ -28,7 +28,7 @@ const QuestionEdit = props => {
           reference="questionnaires"
           fullWidth
         >
-            <SelectInput optionText="title" optionValue="id" defaultValue={QuestionnaireId} disabled />
+            <SelectInput optionText="title" optionValue="id" value={QuestionnaireId} disabled />
         </ReferenceInput>
         <TextInput label="Question" source="title" fullWidth validate={required()} />
         <BooleanInput label="Upload format" source="uploadFormat" fullWidth defaultValue />

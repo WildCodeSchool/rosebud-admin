@@ -24,12 +24,12 @@ const QuestionCreate = props => {
         redirect={redirect}
       > 
         <ReferenceInput
-          source="QuestionnaireId"
-          reference="questionnaires"
-          fullWidth
-        >
-            <SelectInput optionText="title" optionValue="id" defaultValue={QuestionnaireId} disabled />
-        </ReferenceInput>
+            source="QuestionnaireId"
+            reference="questionnaires"
+            fullWidth
+          >
+            <SelectInput optionText="title" optionValue="id" value={QuestionnaireId} defaultValue={QuestionnaireId} disabled />
+          </ReferenceInput>
         <TextInput label="Question" source="title" fullWidth validate={required()} />
         <BooleanInput label="Upload format" source="uploadFormat" fullWidth defaultValue />
       </SimpleForm>

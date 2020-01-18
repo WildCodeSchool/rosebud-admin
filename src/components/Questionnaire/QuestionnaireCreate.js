@@ -7,13 +7,8 @@ import {
   ReferenceInput,
   required
 } from 'react-admin';
-import { parse } from 'query-string';
 
 const QuestionnaireCreate = props => {
-
-  const { QuestionnaireId: QuestionnaireId_string } = parse(props.location.search);
-  const QuestionnaireId = QuestionnaireId_string ? parseInt(QuestionnaireId_string, 10) : '';
-  const redirect = QuestionnaireId ? `/questionnaires/${QuestionnaireId}/show/questions` : false;
   
   return (
     <Create {...props}>

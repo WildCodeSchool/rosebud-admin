@@ -10,11 +10,11 @@ const styles = {
   }
 };
 
-const ShowImagesButton = ({ QuestionId, classes, record }) => (
+const ShowImagesButton = ({ questionnaireId, QuestionId, classes, record }) => (
   <Button
     className={classes.button}
     component={Link}
-    to={`/questions/${QuestionId}/show`}
+    to={`/questions/${QuestionId}/show/?QuestionnaireId=${questionnaireId}`}
     label="Images"
     title="Images"
   >
