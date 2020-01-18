@@ -5,13 +5,15 @@ import {
   SimpleForm,
   SelectInput,
   ReferenceInput,
+  TopToolbar,
   required
 } from 'react-admin';
+import BackButton from '../../BackButton';
 
 const QuestionnaireCreate = props => {
   
   return (
-    <Create {...props}>
+    <Create {...props} actions={<TopToolbar><BackButton link={`/questionnaires`} title="Annuler"/></TopToolbar>}>
       <SimpleForm required="/">
         <ReferenceInput
           source="UserId"

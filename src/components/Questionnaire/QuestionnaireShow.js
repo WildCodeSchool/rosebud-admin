@@ -8,7 +8,6 @@ import {
   EmailField,
   DeleteButton,
   EditButton,
-  ShowButton,
   Toolbar,
   TopToolbar,
   Show,
@@ -18,6 +17,7 @@ import {
   ReferenceField,
   SimpleForm,
 } from "react-admin";
+import jsonExport from 'jsonexport/dist';
 
 import AddQuestionButton from './AddQuestionButton';
 import EditQuestionButton from './EditQuestionButton';
@@ -44,7 +44,7 @@ return (
     <TabbedShowLayout>
       <Tab label="Configuration">
         <SimpleForm toolbar={<QuestionnaireToolbar />}>
-          <ReferenceField label="Administrateur" resource="users" source="UserId" reference="users">
+          <ReferenceField label="Administrateur" resource="users" source="UserId" reference="users" linkType={false}>
             <TextField source="username" />
           </ReferenceField>
           <TextField multiline label="Titre du questionnaire" source="title" fullWidth />

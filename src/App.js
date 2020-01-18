@@ -10,13 +10,6 @@ import { UsersList, UsersEdit, UsersCreate } from './components/User/User';
 
 import authProvider from "./authProvider";
 import Dashboard from './components/Dashboard';
-import { createMuiTheme } from '@material-ui/core/styles';
-
-// const theme = createMuiTheme({
-//   palette: {
-//     type: 'light', 
-//   },
-// });
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -35,7 +28,6 @@ class App extends Component {
         authProvider={authProvider}
         title="Rosebud Admin"
         dashboard={Dashboard}
-        // theme={theme}
         
       >
         <Resource name="questionnaires" {...questionnaires} />

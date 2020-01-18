@@ -61,36 +61,40 @@ const ImageEdit = withStyles(styles)(({ classes, ...props }) => {
   const [currentImageUrl, setCurrentImageUrl] = useState(null);
 
   return (
-    <Edit  {...props} actions={<TopToolbar><BackButton link={redirect} title="Annuler"/></TopToolbar>}>
-      <SimpleForm
-        encType="multipart/form-data"
-        onSubmit={convertAndUpdate}
-        toolbar={<UpdateImageButton />}
+    (QuestionId && QuestionnaireId) ? (
+      <Edit  {...props} actions={<TopToolbar><BackButton link={redirect} title="Annuler" /></TopToolbar>}>
+        <SimpleForm
+          encType="multipart/form-data"
+          onSubmit={convertAndUpdate}
+          toolbar={<UpdateImageButton />}
         >
-        <ReferenceInput
-          resource="questions"
-          source="QuestionId"
-          reference="questions"
-          fullWidth
-        >
+          <ReferenceInput
+            resource="questions"
+            source="QuestionId"
+            reference="questions"
+            fullWidth
+          >
             <SelectInput optionText="title" optionValue="id" value={QuestionId} disabled />
-        </ReferenceInput>
-        <TextInput label="Titre" source="title" fullWidth validate={required()} />
-        <ImageInput source="image_url" label={false} accept="image/*">
+          </ReferenceInput>
+          <TextInput label="Titre" source="title" fullWidth validate={required()} />
+          <ImageInput source="image_url" label={false} accept="image/*">
             <ImageField source="src" title="title" />
-        </ImageInput>
-        <FormDataConsumer>
-          {({formData}) => formData.image_url.src ? setCurrentImage(false) : setCurrentImageUrl(formData.image_url)}
-        </FormDataConsumer>
-        {currentImage && ( 
+          </ImageInput>
+          <FormDataConsumer>
+            {({ formData }) => formData.image_url.src ? setCurrentImage(false) : setCurrentImageUrl(formData.image_url)}
+          </FormDataConsumer>
+          {currentImage && (
             <ImageField source="image_url" label={false} />
-        )}
-        {currentImageUrl && currentImage && (
-          <TextInput source="currentImage" value={currentImageUrl} label={false} className={classes.hidden} />
-        )}
-        {redirectAction && <Redirect to={redirect} />}
-      </SimpleForm>
-    </Edit>
+          )}
+          {currentImageUrl && currentImage && (
+            <TextInput source="currentImage" value={currentImageUrl} label={false} className={classes.hidden} />
+          )}
+          {redirectAction && <Redirect to={redirect} />}
+        </SimpleForm>
+      </Edit>
+    ) : (
+      <Redirect to="/" />
+    )
   );
 });
 

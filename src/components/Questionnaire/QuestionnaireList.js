@@ -4,10 +4,13 @@ import {
   Datagrid,
   List,
   Responsive,
-  ShowButton,
-  DeleteButton,
   SimpleList,
-  TextField
+  TextField,
+  ReferenceField,
+  CloneButton,
+  Filter,
+  ReferenceInput,
+  SelectInput
 } from 'react-admin';
 
 const styles = theme => ({
@@ -19,8 +22,22 @@ const styles = theme => ({
   }
 });
 
+const QuestionnairesFilter = (props) => (
+  <Filter {...props}>
+    <ReferenceInput
+      resource="users"
+      source="UserId"
+      reference="users"
+      label="Administrateur"
+      alwaysOn
+    >
+      <SelectInput optionText="username" optionValue="id" />
+    </ReferenceInput>
+  </Filter>
+);
+
 const QuestionnaireList = withStyles(styles)(({ classes, ...props }) => (
-  <List {...props}>
+  <List {...props} bulkActionButtons={false} filters={<QuestionnairesFilter />}>
     <Responsive
       small={
         <SimpleList label="Titre" linkType="show" primaryText={record => record.title} />
@@ -28,6 +45,10 @@ const QuestionnaireList = withStyles(styles)(({ classes, ...props }) => (
       medium={
         <Datagrid rowClick="show">
           <TextField label="Titre" source="title" cellClassName={classes.title} />
+          <ReferenceField label="Administrateur" source="UserId" reference="users" target="id" linkType={false}>
+              <TextField source="username" />
+          </ReferenceField>
+          <CloneButton />
         </Datagrid>
       }
     />

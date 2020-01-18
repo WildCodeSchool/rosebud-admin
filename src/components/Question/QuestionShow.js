@@ -13,6 +13,7 @@ import {
   TopToolbar,
   TextField
 } from 'react-admin';
+import { Redirect } from 'react-router-dom';
 import { parse } from 'query-string';
 import AddImageButton from './AddImageButton';
 import EditImageButton from './EditImageButton';
@@ -22,7 +23,7 @@ const QuestionShow = props => {
 
   const { QuestionnaireId: QuestionnaireId_string } = parse(props.location.search);
   const QuestionnaireId = QuestionnaireId_string ? parseInt(QuestionnaireId_string, 10) : '';
-  const redirect = QuestionnaireId ? `/questionnaires/${QuestionnaireId}/show/questions` : false;
+  const redirect = `/questionnaires/${QuestionnaireId}/show/questions`;
 
   const QuestionImagesToolbar = props => (
     <Toolbar {...props}>
@@ -31,6 +32,7 @@ const QuestionShow = props => {
   );
   
   return (
+    QuestionnaireId ? (
     <Show {...props} actions={<TopToolbar><BackButton link={redirect} title="Retour aux questions"/></TopToolbar>}>
       <TabbedShowLayout>
         <Tab label="Images">
@@ -52,7 +54,10 @@ const QuestionShow = props => {
           </SimpleForm>
         </Tab>
       </TabbedShowLayout>
-    </Show>
+      </Show>
+    ) : (
+      <Redirect to="/" />
+    )
   )
 };
 
