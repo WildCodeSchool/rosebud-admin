@@ -10,16 +10,21 @@ import {
   EditButton,
   ShowButton,
   Toolbar,
+  TopToolbar,
   Show,
   Tab,
   TabbedShowLayout,
   FormDataConsumer,
+  ReferenceField,
   SimpleForm,
 } from "react-admin";
 
 import AddQuestionButton from './AddQuestionButton';
 import EditQuestionButton from './EditQuestionButton';
 import ShowImagesButton from './ShowImagesButton';
+import ModerateButton from './ModerateButton';
+
+import BackButton from '../../BackButton';
 
 const QuestionnaireToolbar = props => (
   <Toolbar {...props}>
@@ -35,12 +40,16 @@ const QuestionsToolbar = props => (
 
 const QuestionnaireShow = props => {  
 return (
-<Show {...props}>
+<Show {...props} actions={<TopToolbar><BackButton link="/questionnaires" title="Questionnaires"/></TopToolbar>}>
     <TabbedShowLayout>
-      <Tab label="Descriptions">
+      <Tab label="Configuration">
         <SimpleForm toolbar={<QuestionnaireToolbar />}>
-          <TextField multiline label="Texte de participation" source="participationText" fullWidth />
-          <TextField multiline label="Texte de présenation" source="presentationText" fullWidth />
+          <ReferenceField label="Administrateur" resource="users" source="UserId" reference="users">
+            <TextField source="username" />
+          </ReferenceField>
+          <TextField multiline label="Titre du questionnaire" source="title" fullWidth />
+          <TextField multiline label="Texte de présentation du questionnaire" source="participationText" fullWidth />
+          <TextField multiline label="Texte de présentation du mur d'images" source="presentationText" fullWidth />
         </SimpleForm>
       </Tab>
       <Tab label="Questions" path="questions">
@@ -64,6 +73,7 @@ return (
         </SimpleForm>
       </Tab>
       <Tab label="Participations" path="participations">
+        <SimpleForm toolbar={false}>
           <ReferenceManyField
             addLabel={false}
             reference="participants"
@@ -85,10 +95,13 @@ return (
               <TextField label="Âge" source="age" fullWidth />
               <TextField label="Ville" source="city" fullWidth />
               <EmailField label="Email" source="email" fullWidth />
-              <BooleanField label="Approuvée" source="isApproved" defaulValue />
-              <ShowButton />
+              <BooleanField label="En ligne" source="isApproved" defaulValue />
+              <FormDataConsumer>
+              {({ record }) => <ModerateButton partipantId={record.id} questionnaireId={props.id} />}
+              </FormDataConsumer>
             </Datagrid>
           </ReferenceManyField>
+        </SimpleForm>
       </Tab>
     </TabbedShowLayout>
   </Show>

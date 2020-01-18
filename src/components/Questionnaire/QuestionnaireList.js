@@ -20,16 +20,14 @@ const styles = theme => ({
 });
 
 const QuestionnaireList = withStyles(styles)(({ classes, ...props }) => (
-  <List {...props} sort={{ field: 'id', order: 'DESC' }}>
+  <List {...props}>
     <Responsive
       small={
         <SimpleList label="Titre" linkType="show" primaryText={record => record.title} />
       }
       medium={
-        <Datagrid>
+        <Datagrid rowClick="show">
           <TextField label="Titre" source="title" cellClassName={classes.title} />
-          <ShowButton />
-          <DeleteButton undoable={false} redirect="" />
         </Datagrid>
       }
     />

@@ -8,15 +8,35 @@ import {
   SimpleForm,
   Datagrid,
   ImageField,
+  TopToolbar,
+  FormDataConsumer,
+  Toolbar,
   TextField
 } from 'react-admin';
+import { parse } from 'query-string';
+import BackButton from '../../BackButton';
+import ApproveButton from './ApproveButton';
+import DisapproveButton from './DisapproveButton.js';
 
 const ParticipantShow = props => {
+
+  const { QuestionnaireId: QuestionnaireId_string } = parse(props.location.search);
+  const QuestionnaireId = QuestionnaireId_string ? parseInt(QuestionnaireId_string, 10) : '';
+  const redirect = QuestionnaireId ? `/questionnaires/${QuestionnaireId}/show/participations` : false;
+
+  const ModerateToolbar = props => (
+    <Toolbar {...props}>
+      <FormDataConsumer>
+        {({ record }) => record.isApproved ? <DisapproveButton participantId={record.id} redirect={redirect} /> : <ApproveButton participantId={record.id} redirect={redirect} />}
+      </FormDataConsumer>
+    </Toolbar>
+  );
+
   return (
-    <Show {...props}>
+    <Show {...props} actions={<TopToolbar><BackButton link={`/questionnaires/${QuestionnaireId}/show/participations`} title="Annuler"/></TopToolbar>}>
       <TabbedShowLayout>
-        <Tab label="Réponses participant">
-          <SimpleForm>
+        <Tab label="Réponses">
+          <SimpleForm toolbar={<ModerateToolbar/>}>
             <ReferenceManyField
               addLabel={false}
               reference="answers"

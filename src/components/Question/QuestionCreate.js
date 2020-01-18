@@ -6,9 +6,11 @@ import {
   SimpleForm,
   ReferenceInput,
   SelectInput,
+  TopToolbar,
   required
 } from 'react-admin';
 import { parse } from 'query-string';
+import BackButton from '../../BackButton';
 
 const QuestionCreate = props => {
 
@@ -17,7 +19,7 @@ const QuestionCreate = props => {
   const redirect = QuestionnaireId ? `/questionnaires/${QuestionnaireId}/show/questions` : false;
 
   return (
-    <Create {...props}>
+    <Create {...props} actions={<TopToolbar><BackButton link={`/questionnaires/${QuestionnaireId}/show/questions`} title="Annuler"/></TopToolbar>}>
       <SimpleForm
         redirect={redirect}
       > 
