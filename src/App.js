@@ -6,7 +6,7 @@ import questions from './components/Question/';
 import images from './components/Image/';
 import participants from './components/Participant/';
 import answers from './components/Answer/';
-import { UsersList, UsersEdit, UsersCreate } from './components/User/User';
+import users from './components/User/';
 
 import authProvider from "./authProvider";
 import Dashboard from './components/Dashboard';
@@ -35,7 +35,7 @@ class App extends Component {
         <Resource name="images" {...images} />
         <Resource name="participants" {...participants} />
         <Resource name="answers" {...answers} />
-        <Resource name="users" list={UsersList} edit={UsersEdit} create={UsersCreate} />
+        <Resource name="users" {...users} />
       </Admin>
     );
   }

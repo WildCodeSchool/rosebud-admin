@@ -1,4 +1,4 @@
-import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
 import ParticipantEdit from './ParticipantEdit';
 import ParticipantList from './ParticipantList';
@@ -8,5 +8,5 @@ export default {
   edit: ParticipantEdit,
   list: ParticipantList,
   show: ParticipantShow,
-  icon: ChatBubbleIcon
+  icon: AccountBoxIcon
 };

@@ -8,6 +8,7 @@ import {
   TextField,
   ReferenceField,
   CloneButton,
+  ShowButton,
   Filter,
   ReferenceInput,
   SelectInput
@@ -49,6 +50,7 @@ const QuestionnaireList = withStyles(styles)(({ classes, ...props }) => (
               <TextField source="username" />
           </ReferenceField>
           <CloneButton />
+          <ShowButton />
         </Datagrid>
       }
     />

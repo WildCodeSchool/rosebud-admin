@@ -1,4 +1,4 @@
-import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 
 import QuestionCreate from './QuestionCreate';
 import QuestionEdit from './QuestionEdit';
@@ -10,5 +10,5 @@ export default {
   edit: QuestionEdit,
   list: QuestionList,
   show: QuestionShow,
-  icon: ChatBubbleIcon
+  icon: LiveHelpIcon
 };
