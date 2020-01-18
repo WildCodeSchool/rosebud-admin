@@ -52,7 +52,7 @@ const QuestionList = props => {
         }
         medium={
           <Datagrid>
-            <TextField source="title" />
+            <TextField label="Question" source="title" />
           </Datagrid>
         }
       />
