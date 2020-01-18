@@ -8,6 +8,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ImageIcon from '@material-ui/icons/Image';
+import BookIcon from '@material-ui/icons/Book';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { Title } from 'react-admin';
 
 const useStyles = makeStyles(theme => ({
@@ -53,7 +55,7 @@ export default function InsetDividers() {
                 <ListItem>
                     <ListItemAvatar>
                     <Avatar>
-                        <ImageIcon />
+                        <BookIcon />
                     </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={metricQuestionnaires} secondary={metricQuestionnaires > 1 ? 'questionnaires' : 'questionnaire'} />
@@ -65,7 +67,7 @@ export default function InsetDividers() {
                 <ListItem>
                     <ListItemAvatar>
                     <Avatar>
-                        <ImageIcon />
+                        <AccountBoxIcon />
                     </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={metricParticipants} secondary={metricParticipants > 1 ? 'participants' : 'participant'} />
