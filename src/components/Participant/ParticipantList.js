@@ -5,13 +5,15 @@ import {
   EmailField,
   Responsive,
   SimpleList,
+  ReferenceField,
   SelectField,
   Filter,
   ReferenceInput,
   AutocompleteInput,
   SelectInput,
   downloadCSV,
-  TextField
+  TextField,
+  BooleanField
 } from 'react-admin';
 import jsonExport from 'jsonexport/dist';
 
@@ -27,9 +29,10 @@ const ParticipantList = props => {
               age: participants[record.id].age,
               ville: participants[record.id].city,
               email: participants[record.id].email,
+              approve: participants[record.id].isApproved,
       }));
       jsonExport(data, {
-          headers: ['id', 'prenom', 'nom', 'statut', 'age', 'ville', 'email'],
+          headers: ['id', 'prenom', 'nom', 'statut', 'age', 'ville', 'email', 'approve'],
       }, (err, csv) => {;
           downloadCSV(csv, 'participants');
       });
@@ -47,12 +50,12 @@ const QuestionsFilter = (props) => (
       <AutocompleteInput optionText="title" optionValue="id" />
     </ReferenceInput>
     <SelectInput
-          source="status"
-          choices={[
-            { id: 'student', name: 'Élève/étudiant' },
-            { id: 'teacher', name: 'Enseignant' },
-            { id: 'other', name: 'Autre' },
-          ]}
+      source="isApproved"
+      label="État"
+      choices={[
+        { id: '0', name: 'En attente' },
+        { id: '1', name: 'En ligne' },
+      ]}
     />
   </Filter>
 );
@@ -68,6 +71,14 @@ const QuestionsFilter = (props) => (
         }
         medium={
           <Datagrid>
+          <ReferenceField
+            resource="questionnaires"
+            source="QuestionnaireId"
+            reference="questionnaires"
+            label="Questionnaire"
+          >
+            <TextField source="title" />
+          </ReferenceField>
             <TextField label="Prénom" source="firstName" fullWidth />
             <TextField label="Nom" source="lastName" fullWidth />
             <SelectField
@@ -82,6 +93,7 @@ const QuestionsFilter = (props) => (
             <TextField label="Âge" source="age" fullWidth />
             <TextField label="Ville" source="city" fullWidth />
             <EmailField label="Email" source="email" fullWidth />
+            <BooleanField label="En ligne" source="isApproved" fullWidth />
           </Datagrid>
         }
       />

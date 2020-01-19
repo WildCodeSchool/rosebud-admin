@@ -7,9 +7,9 @@ import images from './components/Image/';
 import participants from './components/Participant/';
 import answers from './components/Answer/';
 import users from './components/User/';
+import Dashboard from './components/Dashboard';
 
 import authProvider from "./authProvider";
-import Dashboard from './components/Dashboard';
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -26,7 +26,7 @@ class App extends Component {
       <Admin
         dataProvider={jsonServerProvider("/api/back/v1", httpClient)}
         authProvider={authProvider}
-        title="Rosebud Admin"
+        title="Rosebud"
         dashboard={Dashboard}
         
       >

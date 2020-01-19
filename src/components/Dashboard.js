@@ -7,9 +7,9 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import ImageIcon from '@material-ui/icons/Image';
-import BookIcon from '@material-ui/icons/Book';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import { Title } from 'react-admin';
 
 const useStyles = makeStyles(theme => ({
@@ -24,69 +24,74 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function InsetDividers() {
-    const [metricQuestionnaires, setMetricQuestionnaires] = useState(0);
+export default function Dashboard() {
+    
     const [metricParticipants, setMetricParticipants] = useState(0);
-    const [metricAnswers, setMetricAnswers] = useState(0);
+    const [metricParticipantsApproved, setMetricParticipantsApproved] = useState(0);
+    const [metricParticipantsDisapproved, setMetricParticipantsDisapproved] = useState(0);
+
     useEffect(() => {
-        const fetchMetricQuestionnaires = async () => {
-            const result = await axios.get(`/api/back/v1/metrics/questionnaires`);
-            setMetricQuestionnaires(result.data);
-          };
-          fetchMetricQuestionnaires();
-          const fetchMetricParticipants = async () => {
+          
+        const fetchMetricParticipants = async () => {
               const result = await axios.get(`/api/back/v1/metrics/participants`);
               setMetricParticipants(result.data);
             };
-            fetchMetricParticipants();
-          const fetchMetricAnswers = async () => {
-              const result = await axios.get(`/api/back/v1/metrics/answers`);
-              setMetricAnswers(result.data);
-            };
-            fetchMetricAnswers();
+        fetchMetricParticipants();
+        
+        const fetchMetricParticipantsApproved = async () => {
+            const result = await axios.get(`/api/back/v1/metrics/participants/approve`);
+            setMetricParticipantsApproved(result.data);
+          };
+        fetchMetricParticipantsApproved();
+        
+        const fetchMetricParticipantsDisapproved = async () => {
+            const result = await axios.get(`/api/back/v1/metrics/participants/disapprove`);
+            setMetricParticipantsDisapproved(result.data);
+          };
+          fetchMetricParticipantsDisapproved();
     })
+
     const classes = useStyles();
+    
     return (
-    <>
-        <Title title="Rosebud" />
         <Grid container spacing={3} className={classes.root}>
-            <Grid item xs={4} className={classes.paper}>
+        <Title title="Rosebud" />
+            <Grid item md={4} xs={12} className={classes.paper}>
                 <Paper>
                 <ListItem>
                     <ListItemAvatar>
                     <Avatar>
-                        <BookIcon />
+                        <AssignmentIndIcon />
                     </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={metricQuestionnaires} secondary={metricQuestionnaires > 1 ? 'questionnaires' : 'questionnaire'} />
+                    <ListItemText primary={metricParticipants} secondary={metricParticipants > 1 ? 'participations' : 'participation'} />
                 </ListItem>
                 </Paper>
             </Grid>
-            <Grid item xs={4} className={classes.paper}>
+            <Grid item md={4} xs={12} className={classes.paper}>
                 <Paper>
                 <ListItem>
                     <ListItemAvatar>
                     <Avatar>
-                        <AccountBoxIcon />
+                        <AssignmentTurnedInIcon />
                     </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={metricParticipants} secondary={metricParticipants > 1 ? 'participants' : 'participant'} />
+                    <ListItemText primary={metricParticipantsApproved} secondary={metricParticipantsApproved > 1 ? 'participations en lignes' : 'participation en ligne'} />
                 </ListItem>
                 </Paper>
             </Grid>
-            <Grid item xs={4} className={classes.paper}>
+            <Grid item md={4} xs={12} className={classes.paper}>
                 <Paper>
                 <ListItem>
                     <ListItemAvatar>
                     <Avatar>
-                        <ImageIcon />
+                        <AssignmentIcon />
                     </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={metricAnswers} secondary={metricAnswers > 1 ? 'images' : 'image'} />
+                    <ListItemText primary={metricParticipantsDisapproved} secondary={metricParticipantsDisapproved > 1 ? 'participations en attentes' : 'participation en attente'} />
                 </ListItem>
                 </Paper>
             </Grid>
         </Grid>
-    </>
   );
 }

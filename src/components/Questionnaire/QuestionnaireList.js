@@ -7,7 +7,6 @@ import {
   SimpleList,
   TextField,
   ReferenceField,
-  CloneButton,
   ShowButton,
   Filter,
   ReferenceInput,
@@ -49,7 +48,6 @@ const QuestionnaireList = withStyles(styles)(({ classes, ...props }) => (
           <ReferenceField label="Administrateur" source="UserId" reference="users" target="id" linkType={false}>
               <TextField source="username" />
           </ReferenceField>
-          <CloneButton />
           <ShowButton />
         </Datagrid>
       }
