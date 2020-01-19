@@ -76,6 +76,7 @@ const QuestionsFilter = (props) => (
             source="QuestionnaireId"
             reference="questionnaires"
             label="Questionnaire"
+            linkType="show"    
           >
             <TextField source="title" />
           </ReferenceField>
