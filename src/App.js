@@ -8,6 +8,7 @@ import participants from './components/Participant/';
 import answers from './components/Answer/';
 import users from './components/User/';
 import Dashboard from './components/Dashboard';
+import MyLayout from './MyLayout';
 
 import authProvider from "./authProvider";
 
@@ -28,7 +29,7 @@ class App extends Component {
         authProvider={authProvider}
         title="Rosebud"
         dashboard={Dashboard}
-        
+        layout={MyLayout}
       >
         <Resource name="questionnaires" {...questionnaires} />
         <Resource name="questions" {...questions} />
