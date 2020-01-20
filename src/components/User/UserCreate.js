@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Edit,
+  Create,
   TextInput,
   SimpleForm,
   TopToolbar,
@@ -11,7 +11,7 @@ import BackButton from '../../BackButton';
 const UserCreate = props => {
 
   return (
-    <Edit  {...props} actions={<TopToolbar><BackButton link="/users" title="Annuler"/></TopToolbar>}>
+    <Create  {...props} actions={<TopToolbar><BackButton link="/users" title="Annuler"/></TopToolbar>}>
       <SimpleForm
         redirect="/users"
       >
@@ -19,7 +19,7 @@ const UserCreate = props => {
         <TextInput source="email" autoComplete="off" fullWidth validate={required()} />
         <TextInput source="password" autoComplete="off" type="password" fullWidth validate={required()} />
       </SimpleForm>
-      </Edit>
+    </Create>
   );
 };
 
