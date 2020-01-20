@@ -76,7 +76,7 @@ export default function Dashboard() {
                         <AssignmentTurnedInIcon />
                     </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={metricParticipantsApproved} secondary={metricParticipantsApproved > 1 ? 'participations en lignes' : 'participation en ligne'} />
+                    <ListItemText primary={metricParticipantsApproved} secondary={metricParticipantsApproved > 1 ? 'participations en ligne' : 'participation en ligne'} />
                 </ListItem>
                 </Paper>
             </Grid>
@@ -88,7 +88,7 @@ export default function Dashboard() {
                         <AssignmentIcon />
                     </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={metricParticipantsDisapproved} secondary={metricParticipantsDisapproved > 1 ? 'participations en attentes' : 'participation en attente'} />
+                    <ListItemText primary={metricParticipantsDisapproved} secondary={metricParticipantsDisapproved > 1 ? 'participations en attente' : 'participation en attente'} />
                 </ListItem>
                 </Paper>
             </Grid>
