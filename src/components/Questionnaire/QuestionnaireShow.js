@@ -17,7 +17,6 @@ import {
   ReferenceField,
   SimpleForm,
 } from "react-admin";
-import jsonExport from 'jsonexport/dist';
 
 import AddQuestionButton from './AddQuestionButton';
 import EditQuestionButton from './EditQuestionButton';
