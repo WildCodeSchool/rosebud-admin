@@ -14,7 +14,9 @@ const QuestionnaireCreate = props => {
   
   return (
     <Create {...props} actions={<TopToolbar><BackButton link={`/questionnaires`} title="Annuler"/></TopToolbar>}>
-      <SimpleForm required="/">
+      <SimpleForm 
+        redirect="/questionnaires"
+      >
         <ReferenceInput
           source="UserId"
           reference="users"
