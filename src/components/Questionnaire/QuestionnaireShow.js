@@ -37,16 +37,22 @@ const QuestionsToolbar = props => (
   </Toolbar>
 );
 
+const QuestionnaireTopToolbar = () => (
+  <TopToolbar>
+    <BackButton link="/questionnaires" title="Questionnaires" />
+  </TopToolbar>
+);
+ 
 const QuestionnaireShow = props => {  
 return (
-<Show {...props} actions={<TopToolbar><BackButton link="/questionnaires" title="Questionnaires"/></TopToolbar>}>
+<Show {...props} actions={<QuestionnaireTopToolbar />}>
     <TabbedShowLayout>
       <Tab label="Configuration">
         <SimpleForm toolbar={<QuestionnaireToolbar />}>
           <ReferenceField label="Administrateur" resource="users" source="UserId" reference="users" linkType={false}>
             <TextField source="username" />
           </ReferenceField>
-          <TextField multiline label="Titre du questionnaire" source="title" fullWidth />
+          <TextField label="Titre du questionnaire" source="title" fullWidth />
           <TextField multiline label="Texte de présentation du questionnaire" source="participationText" fullWidth />
           <TextField multiline label="Texte de présentation du mur d'images" source="presentationText" fullWidth />
         </SimpleForm>
@@ -60,7 +66,7 @@ return (
             fullWidth
           >
             <Datagrid fullWidth>
-              <TextField label={false} source="title" />
+              <TextField addLabel={false} source="title" />
               <BooleanField label="Upload" source="uploadFormat" />
               <FormDataConsumer>
               {({ record }) => record.uploadFormat ? "" : <ShowImagesButton QuestionId={record.id} questionnaireId={props.id} />}
