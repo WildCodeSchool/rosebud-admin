@@ -49,6 +49,7 @@ const AnswerList = props => {
       <Responsive
         small={
           <SimpleList
+            key={record => record.id}
             linkType={false}
             primaryText={record => record.comment}
           />

@@ -44,6 +44,7 @@ const QuestionList = props => {
   return (
     <List {...props} bulkActionButtons={false} exporter={exporter} filters={<QuestionsFilter />}>
       <Responsive
+        key={record => record.id}
         small={
           <SimpleList
             linkType={false}

@@ -44,6 +44,7 @@ const ImagesFilter = (props) => (
 const ImageList = props => (
   <List {...props} bulkActionButtons={false} exporter={exporter} filters={<ImagesFilter />}>
     <Responsive
+      key={record => record.id}
       small={
         <SimpleList
           linkType={false}
