@@ -6,6 +6,7 @@ import {
   ReferenceInput,
   SelectInput,
   required,
+  BooleanInput,
   TopToolbar
 } from 'react-admin';
 import BackButton from '../../BackButton';
@@ -28,6 +29,7 @@ const QuestionnaireEdit = props => {
           <TextInput multiline label="Titre du questionnaire" source="title" fullWidth validate={required()}  />
           <TextInput multiline label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
           <TextInput multiline label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
+          <BooleanInput label="Questionnaire grand public" source="defaultQuestionnaire" fullWidth />
       </SimpleForm>
     </Edit>
   );
