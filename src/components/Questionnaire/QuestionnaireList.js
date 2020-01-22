@@ -39,7 +39,6 @@ const QuestionnairesFilter = (props) => (
 const QuestionnaireList = withStyles(styles)(({ classes, ...props }) => (
   <List {...props} bulkActionButtons={false} exporter={false} filters={<QuestionnairesFilter />}>
     <Responsive
-      key={record => record.id}
       small={
         <SimpleList label="Titre" linkType="show" primaryText={record => record.title} />
       }
