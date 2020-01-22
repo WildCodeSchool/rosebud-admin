@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
   DeleteButton,
   Show,
@@ -33,7 +33,7 @@ const QuestionShow = props => {
   
   return (
     QuestionnaireId ? (
-    <Show {...props} actions={<TopToolbar><BackButton link={redirect} title="Retour aux questions"/></TopToolbar>}>
+    <Show {...props} actions={<TopToolbar><BackButton linkBack={redirect} titleBack="Retour aux questions"/></TopToolbar>}>
       <TabbedShowLayout>
         <Tab label="Images">
           <SimpleForm toolbar={<QuestionImagesToolbar />}>

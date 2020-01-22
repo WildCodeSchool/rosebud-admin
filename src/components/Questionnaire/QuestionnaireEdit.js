@@ -6,13 +6,14 @@ import {
   ReferenceInput,
   SelectInput,
   required,
+  BooleanInput,
   TopToolbar
 } from 'react-admin';
 import BackButton from '../../BackButton';
 
 const QuestionnaireEdit = props => {
   return (
-    <Edit  {...props} actions={<TopToolbar><BackButton link={`${props.location.pathname}/show`} title="Annuler"/></TopToolbar>}>
+    <Edit {...props} actions={<TopToolbar><BackButton linkBack={`${props.location.pathname}/show`} titleBack="Annuler"/></TopToolbar>}>
       <SimpleForm
         redirect={`${props.location.pathname}/show`}
       >
@@ -25,9 +26,10 @@ const QuestionnaireEdit = props => {
         >
             <SelectInput optionText="username" defaultValue />
         </ReferenceInput>
-          <TextInput multiline autoComplete="off" label="Titre du questionnaire" source="title" fullWidth validate={required()}  />
-          <TextInput multiline autoComplete="off" label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
-          <TextInput multiline autoComplete="off" label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
+          <TextInput autoComplete="off" multiline label="Titre du questionnaire" source="title" fullWidth validate={required()}  />
+          <TextInput autoComplete="off" multiline label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
+          <TextInput autoComplete="off" multiline label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
+          <BooleanInput label="Questionnaire grand public" source="defaultQuestionnaire" fullWidth />
       </SimpleForm>
     </Edit>
   );

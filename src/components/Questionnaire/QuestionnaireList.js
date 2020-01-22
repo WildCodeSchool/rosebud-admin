@@ -45,7 +45,7 @@ const QuestionnaireList = withStyles(styles)(({ classes, ...props }) => (
       medium={
         <Datagrid rowClick="show">
           <TextField label="Titre" source="title" cellClassName={classes.title} />
-          <ReferenceField label="Administrateur" source="UserId" reference="users" target="id" linkType={false}>
+          <ReferenceField label="Administrateur" source="UserId" reference="users" target="id" link={false}>
               <TextField source="username" />
           </ReferenceField>
           <ShowButton />

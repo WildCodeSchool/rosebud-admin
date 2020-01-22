@@ -62,7 +62,7 @@ const ImageEdit = withStyles(styles)(({ classes, ...props }) => {
 
   return (
     (QuestionId && QuestionnaireId) ? (
-      <Edit  {...props} actions={<TopToolbar><BackButton link={redirect} title="Annuler" /></TopToolbar>}>
+      <Edit  {...props} actions={<TopToolbar><BackButton linkBack={redirect} titleBack="Annuler" /></TopToolbar>}>
         <SimpleForm
           encType="multipart/form-data"
           onSubmit={convertAndUpdate}

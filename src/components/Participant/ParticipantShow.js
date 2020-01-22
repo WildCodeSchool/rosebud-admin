@@ -33,7 +33,7 @@ const ParticipantShow = props => {
   );
 
   return (
-    <Show {...props} actions={<TopToolbar><BackButton link={`/questionnaires/${QuestionnaireId}/show/participations`} title="Annuler"/></TopToolbar>}>
+    <Show {...props} actions={<TopToolbar><BackButton linkBack={`/questionnaires/${QuestionnaireId}/show/participations`} titleBack="Annuler"/></TopToolbar>}>
       <TabbedShowLayout>
         <Tab label="Réponses">
           <SimpleForm toolbar={<ModerateToolbar/>}>

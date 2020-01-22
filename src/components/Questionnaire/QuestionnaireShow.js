@@ -17,7 +17,6 @@ import {
   ReferenceField,
   SimpleForm,
 } from "react-admin";
-import jsonExport from 'jsonexport/dist';
 
 import AddQuestionButton from './AddQuestionButton';
 import EditQuestionButton from './EditQuestionButton';
@@ -38,18 +37,24 @@ const QuestionsToolbar = props => (
   </Toolbar>
 );
 
+const QuestionnaireTopToolbar = () => (
+  <TopToolbar>
+    <BackButton linkBack="/questionnaires" titleBack="Questionnaires" />
+  </TopToolbar>
+);
+ 
 const QuestionnaireShow = props => {  
 return (
-<Show {...props} actions={<TopToolbar><BackButton link="/questionnaires" title="Questionnaires"/></TopToolbar>}>
+<Show {...props} actions={<QuestionnaireTopToolbar />}>
     <TabbedShowLayout>
       <Tab label="Configuration">
         <SimpleForm toolbar={<QuestionnaireToolbar />}>
-          <ReferenceField label="Administrateur" resource="users" source="UserId" reference="users" linkType={false}>
+          <ReferenceField label="Administrateur" resource="users" source="UserId" reference="users" link={false}>
             <TextField source="username" />
           </ReferenceField>
-          <TextField multiline label="Titre du questionnaire" source="title" fullWidth />
-          <TextField multiline label="Texte de présentation du questionnaire" source="participationText" fullWidth />
-          <TextField multiline label="Texte de présentation du mur d'images" source="presentationText" fullWidth />
+          <TextField label="Titre du questionnaire" source="title" />
+          <TextField label="Texte de présentation du questionnaire" source="participationText" />
+          <TextField label="Texte de présentation du mur d'images" source="presentationText" />
         </SimpleForm>
       </Tab>
       <Tab label="Questions" path="questions">
@@ -60,8 +65,8 @@ return (
             target="QuestionnaireId"
             fullWidth
           >
-            <Datagrid fullWidth>
-              <TextField label={false} source="title" />
+            <Datagrid>
+              <TextField addLabel={false} source="title" />
               <BooleanField label="Upload" source="uploadFormat" />
               <FormDataConsumer>
               {({ record }) => record.uploadFormat ? "" : <ShowImagesButton QuestionId={record.id} questionnaireId={props.id} />}
@@ -80,9 +85,9 @@ return (
             target="QuestionnaireId"
             fullWidth
           >
-            <Datagrid fullWidth>
-              <TextField label="Prénom" source="firstName" fullWidth />
-              <TextField label="Nom" source="lastName" fullWidth />
+            <Datagrid>
+              <TextField label="Prénom" source="firstName" />
+              <TextField label="Nom" source="lastName" />
               <SelectField
                 label="Status"
                 source="status"
@@ -92,9 +97,9 @@ return (
                   { id: 'other', name: 'Autre' },
                 ]}
               />
-              <TextField label="Âge" source="age" fullWidth />
-              <TextField label="Ville" source="city" fullWidth />
-              <EmailField label="Email" source="email" fullWidth />
+              <TextField label="Âge" source="age" />
+              <TextField label="Ville" source="city" />
+              <EmailField label="Email" source="email" />
               <BooleanField label="En ligne" source="isApproved" defaulValue />
               <FormDataConsumer>
               {({ record }) => <ModerateButton partipantId={record.id} questionnaireId={props.id} />}

@@ -12,6 +12,7 @@ const UserList = props => {
   return (
     <List {...props} bulkActionButtons={false} exporter={false}>
       <Responsive
+        key={record => record.id}
         small={
           <SimpleList
             linkType={false}

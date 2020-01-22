@@ -6,6 +6,7 @@ import {
   SelectInput,
   ReferenceInput,
   TopToolbar,
+  BooleanInput,
   required
 } from 'react-admin';
 import BackButton from '../../BackButton';
@@ -13,8 +14,10 @@ import BackButton from '../../BackButton';
 const QuestionnaireCreate = props => {
   
   return (
-    <Create {...props} actions={<TopToolbar><BackButton link={`/questionnaires`} title="Annuler"/></TopToolbar>}>
-      <SimpleForm required="/">
+    <Create {...props} actions={<TopToolbar><BackButton linkBack={`/questionnaires`} titleBack="Annuler"/></TopToolbar>}>
+      <SimpleForm 
+        redirect="/questionnaires"
+      >
         <ReferenceInput
           source="UserId"
           reference="users"
@@ -27,6 +30,7 @@ const QuestionnaireCreate = props => {
         <TextInput autoComplete="off" label="Titre" source="title" fullWidth validate={required()} />
         <TextInput multiline autoComplete="off" label="Texte de participation" source="participationText" fullWidth validate={required()} />
         <TextInput multiline autoComplete="off" label="Texte de présentation" source="presentationText" fullWidth validate={required()} />
+        <BooleanInput label="Questionnaire grand public" source="defaultQuestionnaire" fullWidth defaultValue={false} />
       </SimpleForm>
     </Create>
   );
