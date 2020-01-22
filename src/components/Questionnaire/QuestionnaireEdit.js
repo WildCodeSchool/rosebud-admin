@@ -12,7 +12,7 @@ import BackButton from '../../BackButton';
 
 const QuestionnaireEdit = props => {
   return (
-    <Edit  {...props} actions={<TopToolbar><BackButton link={`${props.location.pathname}/show`} title="Annuler"/></TopToolbar>}>
+    <Edit {...props} actions={<TopToolbar><BackButton linkBack={`${props.location.pathname}/show`} titleBack="Annuler"/></TopToolbar>}>
       <SimpleForm
         redirect={`${props.location.pathname}/show`}
       >

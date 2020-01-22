@@ -10,13 +10,13 @@ const styles = {
   }
 };
 
-const BackButton = ({ classes, record, link, title }) => (
+const BackButton = ({ classes, record, linkBack, titleBack }) => (
   <Button
     className={classes.button}
     component={Link}
-    to={link}
-    label={title}
-    title={title}
+    to={linkBack}
+    label={titleBack}
+    title={titleBack}
   >
     <ArrowBackIcon />
   </Button>

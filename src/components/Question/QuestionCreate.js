@@ -21,7 +21,7 @@ const QuestionCreate = props => {
 
   return (
     QuestionnaireId ? ( 
-    <Create {...props} actions={<TopToolbar><BackButton link={`/questionnaires/${QuestionnaireId}/show/questions`} title="Annuler"/></TopToolbar>}>
+    <Create {...props} actions={<TopToolbar><BackButton linkBack={`/questionnaires/${QuestionnaireId}/show/questions`} titleBack="Annuler"/></TopToolbar>}>
       <SimpleForm
         redirect={redirect}
       > 

@@ -50,7 +50,7 @@ const ImageCreate = props => {
   
   return (
     (QuestionId && QuestionnaireId) ? (
-    <Create {...props} actions={<TopToolbar><BackButton link={redirect} title="Annuler"/></TopToolbar>}>
+    <Create {...props} actions={<TopToolbar><BackButton linkBack={redirect} titleBack="Annuler"/></TopToolbar>}>
         <SimpleForm
           encType="multipart/form-data"
           onSubmit={convertAndSubmit}

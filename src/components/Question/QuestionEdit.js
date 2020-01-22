@@ -21,7 +21,7 @@ const QuestionEdit = props => {
 
   return (
     QuestionnaireId ? ( 
-    <Edit  {...props} actions={<TopToolbar><BackButton link={redirect} title="Annuler"/></TopToolbar>}>
+    <Edit  {...props} actions={<TopToolbar><BackButton linkBack={redirect} titleBack="Annuler"/></TopToolbar>}>
       <SimpleForm
         redirect={redirect}
       >

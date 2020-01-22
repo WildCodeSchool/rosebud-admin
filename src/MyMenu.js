@@ -7,7 +7,6 @@ import { MenuItemLink } from 'react-admin';
 import { withRouter } from 'react-router-dom';
 import BookIcon from '@material-ui/icons/Book';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 
 const Menu = ({ onMenuClick, logout }) => {

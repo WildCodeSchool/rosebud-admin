@@ -13,7 +13,7 @@ import BackButton from '../../BackButton';
 const QuestionnaireCreate = props => {
   
   return (
-    <Create {...props} actions={<TopToolbar><BackButton link={`/questionnaires`} title="Annuler"/></TopToolbar>}>
+    <Create {...props} actions={<TopToolbar><BackButton linkBack={`/questionnaires`} titleBack="Annuler"/></TopToolbar>}>
       <SimpleForm 
         redirect="/questionnaires"
       >
