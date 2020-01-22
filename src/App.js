@@ -9,6 +9,7 @@ import answers from './components/Answer/';
 import users from './components/User/';
 import Dashboard from './components/Dashboard';
 import MyLayout from './MyLayout';
+import { Login } from 'react-admin';
 
 import authProvider from "./authProvider";
 
@@ -20,6 +21,7 @@ const token = localStorage.getItem('token');
 options.headers.set('Authorization', `Bearer ${token}`);
 return fetchUtils.fetchJson(url, options);
 };
+const MyLoginPage = () => <Login backgroundImage="https://upopi.ciclic.fr/sites/default/files/a-essential-killing5.jpg" />;
 
 class App extends Component {
   render() {
@@ -30,6 +32,7 @@ class App extends Component {
         title="Rosebud"
         dashboard={Dashboard}
         layout={MyLayout}
+        loginPage={MyLoginPage}
       >
         <Resource name="questionnaires" {...questionnaires} />
         <Resource name="questions" {...questions} />

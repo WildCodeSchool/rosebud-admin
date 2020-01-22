@@ -25,9 +25,9 @@ const QuestionnaireEdit = props => {
         >
             <SelectInput optionText="username" defaultValue />
         </ReferenceInput>
-          <TextInput multiline label="Titre du questionnaire" source="title" fullWidth validate={required()}  />
-          <TextInput multiline label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
-          <TextInput multiline label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
+          <TextInput multiline autoComplete="off" label="Titre du questionnaire" source="title" fullWidth validate={required()}  />
+          <TextInput multiline autoComplete="off" label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
+          <TextInput multiline autoComplete="off" label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
       </SimpleForm>
     </Edit>
   );

@@ -32,7 +32,7 @@ const QuestionCreate = props => {
           >
             <SelectInput optionText="title" optionValue="id" value={QuestionnaireId} defaultValue={QuestionnaireId} disabled />
           </ReferenceInput>
-        <TextInput label="Question" source="title" fullWidth validate={required()} />
+        <TextInput autoComplete="off" label="Question" source="title" fullWidth validate={required()} />
         <BooleanInput label="Upload format" source="uploadFormat" fullWidth defaultValue />
       </SimpleForm>
       </Create>

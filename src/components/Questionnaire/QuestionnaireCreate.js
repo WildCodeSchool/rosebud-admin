@@ -24,9 +24,9 @@ const QuestionnaireCreate = props => {
         >
             <SelectInput optionText="username" />
         </ReferenceInput>
-        <TextInput label="Titre" source="title" fullWidth validate={required()} />
-        <TextInput multiline label="Texte de participation" source="participationText" fullWidth validate={required()} />
-        <TextInput multiline label="Texte de présentation" source="presentationText" fullWidth validate={required()} />
+        <TextInput autoComplete="off" label="Titre" source="title" fullWidth validate={required()} />
+        <TextInput multiline autoComplete="off" label="Texte de participation" source="participationText" fullWidth validate={required()} />
+        <TextInput multiline autoComplete="off" label="Texte de présentation" source="presentationText" fullWidth validate={required()} />
       </SimpleForm>
     </Create>
   );

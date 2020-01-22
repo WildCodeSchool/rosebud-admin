@@ -6,6 +6,7 @@ import List from "@material-ui/core/List";
 import { MenuItemLink } from 'react-admin';
 import { withRouter } from 'react-router-dom';
 import BookIcon from '@material-ui/icons/Book';
+import ImportExportIcon from '@material-ui/icons/ImportExport';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 import DashboardIcon from '@material-ui/icons/Dashboard';
@@ -34,6 +35,13 @@ const Menu = ({ onMenuClick, logout }) => {
                 to="/users"
                 primaryText="Utilisateurs"
                 leftIcon={<SupervisorAccountIcon />}
+                onClick={onMenuClick}
+                sidebarIsOpen={open}
+            />
+            <MenuItemLink
+                to="/participants"
+                primaryText="Export"
+                leftIcon={<ImportExportIcon/>}
                 onClick={onMenuClick}
                 sidebarIsOpen={open}
             />
