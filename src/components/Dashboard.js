@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import api from '../api';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -33,19 +33,19 @@ export default function Dashboard() {
     useEffect(() => {
           
         const fetchMetricParticipants = async () => {
-              const result = await axios.get(`/api/back/v1/metrics/participants`);
+              const result = await api.get(`/api/back/v1/metrics/participants`);
               setMetricParticipants(result.data);
             };
         fetchMetricParticipants();
         
         const fetchMetricParticipantsApproved = async () => {
-            const result = await axios.get(`/api/back/v1/metrics/participants/approve`);
+            const result = await api.get(`/api/back/v1/metrics/participants/approve`);
             setMetricParticipantsApproved(result.data);
           };
         fetchMetricParticipantsApproved();
         
         const fetchMetricParticipantsDisapproved = async () => {
-            const result = await axios.get(`/api/back/v1/metrics/participants/disapprove`);
+            const result = await api.get(`/api/back/v1/metrics/participants/disapprove`);
             setMetricParticipantsDisapproved(result.data);
           };
           fetchMetricParticipantsDisapproved();

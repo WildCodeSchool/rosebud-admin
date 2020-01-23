@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+import api from '../../api';
 import {
   Edit,
   TextInput,
@@ -45,7 +45,7 @@ const ImageEdit = withStyles(styles)(({ classes, ...props }) => {
     e.preventDefault();
     const imageId = props.location.pathname.split('/').pop();
     const data = new FormData(e.target);
-    axios.put(`/api/back/v1/images/${imageId}`, data);
+    api.put(`/api/back/v1/images/${imageId}`, data);
     console.log(...data)
     setRedirectAction(true)
   };

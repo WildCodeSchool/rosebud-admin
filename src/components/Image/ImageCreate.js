@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+import api from '../../api';
 import {
   Create,
   TextInput,
@@ -43,7 +43,7 @@ const ImageCreate = props => {
   const convertAndSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-    axios.post('/api/back/v1/images', data);
+    api.post('/api/back/v1/images', data);
     console.log(...data)
     setRedirectAction(true)
   };
