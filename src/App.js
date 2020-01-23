@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <Admin
-        dataProvider={jsonServerProvider(`${process.env.REACT_APP_API_URL || '/'}api/back/v1` , httpClient)}
+        dataProvider={jsonServerProvider(`${process.env.REACT_APP_API_URL || ''}/api/back/v1` , httpClient)}
         authProvider={authProvider}
         title="Rosebud"
         dashboard={Dashboard}
