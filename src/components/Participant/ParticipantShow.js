@@ -51,7 +51,11 @@ const ParticipantShow = props => {
                 <ReferenceField label="Question" source="QuestionId" reference="questions" target="id" linkType={false}>
                   <TextField source="title" />
                 </ReferenceField>
-                <ImageField src={baseURL} source="image_url" label="Image" />
+                <FormDataConsumer>
+                    {({ record }) =>
+                    <img src={baseURL + record.image_url} alt="Answer" width="200px" />
+                    }
+                </FormDataConsumer>
                 <TextField source="comment" label="Commentaire" />
               </Datagrid>
             </ReferenceManyField>
