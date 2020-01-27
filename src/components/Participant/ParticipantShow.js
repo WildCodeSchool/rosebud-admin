@@ -46,13 +46,12 @@ const ParticipantShow = props => {
               fullWidth
             >
               <Datagrid
-                basePath={baseURL}
                 fullWidth
               >
                 <ReferenceField label="Question" source="QuestionId" reference="questions" target="id" linkType={false}>
                   <TextField source="title" />
                 </ReferenceField>
-                <ImageField source="image_url" label="Image" />
+                <ImageField src={baseURL} source="image_url" label="Image" />
                 <TextField source="comment" label="Commentaire" />
               </Datagrid>
             </ReferenceManyField>
