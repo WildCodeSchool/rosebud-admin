@@ -32,6 +32,8 @@ const ParticipantShow = props => {
     </Toolbar>
   );
 
+  const baseURL = process.env.REACT_APP_API_URL || '';
+
   return (
     <Show {...props} actions={<TopToolbar><BackButton linkBack={`/questionnaires/${QuestionnaireId}/show/participations`} titleBack="Annuler"/></TopToolbar>}>
       <TabbedShowLayout>
@@ -47,7 +49,7 @@ const ParticipantShow = props => {
                 <ReferenceField label="Question" source="QuestionId" reference="questions" target="id" linkType={false}>
                   <TextField source="title" />
                 </ReferenceField>
-                <ImageField source="image_url" label="Image" />
+                <ImageField basePath={baseURL} source="image_url" label="Image" />
                 <TextField source="comment" label="Commentaire" />
               </Datagrid>
             </ReferenceManyField>
