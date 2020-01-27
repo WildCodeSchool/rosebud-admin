@@ -4,7 +4,7 @@ import {
   List,
   Responsive,
   SimpleList,
-  ImageField,
+  FormDataConsumer,
   TextField,
   Filter,
   ReferenceInput,
@@ -41,6 +41,8 @@ const ImagesFilter = (props) => (
   </Filter>
 );
 
+const baseURL = process.env.REACT_APP_API_URL || '';
+
 const ImageList = props => (
   <List {...props} bulkActionButtons={false} exporter={exporter} filters={<ImagesFilter />}>
     <Responsive
@@ -52,7 +54,11 @@ const ImageList = props => (
       }
       medium={
         <Datagrid>
-          <ImageField label="Image" source="image_url" />
+        <FormDataConsumer>
+            {({ record }) =>
+            <img src={baseURL + record.image_url} alt="Answer" width="200px" />
+            }
+        </FormDataConsumer>
           <TextField label="Titre" source="title" fullWidth />
         </Datagrid>
       }

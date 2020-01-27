@@ -8,7 +8,7 @@ import {
   Tab,
   Datagrid,
   TextInput,
-  ImageField,
+  FormDataConsumer,
   Toolbar,
   TopToolbar,
   TextField
@@ -31,6 +31,8 @@ const QuestionShow = props => {
     </Toolbar>
   );
   
+  const baseURL = process.env.REACT_APP_API_URL || '';
+
   return (
     QuestionnaireId ? (
     <Show {...props} actions={<TopToolbar><BackButton linkBack={redirect} titleBack="Retour aux questions"/></TopToolbar>}>
@@ -45,7 +47,11 @@ const QuestionShow = props => {
               fullWidth
             >
               <Datagrid fullWidth>
-                <ImageField label="Image" source="image_url" />
+              <FormDataConsumer>
+                  {({ record }) =>
+                  <img src={baseURL + record.image_url} alt="Answer" width="200px" />
+                  }
+              </FormDataConsumer>
                 <TextField label="Titre" source="title" />
                 <EditImageButton questionnaireId={QuestionnaireId} />
                 <DeleteButton undoable={false} redirect="" />

@@ -9,7 +9,7 @@ import {
   ReferenceInput,
   AutocompleteInput,
   ReferenceField,
-  ImageField,
+  FormDataConsumer,
   downloadCSV,
 } from 'react-admin';
 import jsonExport from 'jsonexport/dist';
@@ -44,6 +44,8 @@ const AnswerList = props => {
     </Filter>
   );
   
+  const baseURL = process.env.REACT_APP_API_URL || '';
+
   return (
     <List {...props} bulkActionButtons={false} exporter={exporter} filters={<AnswersFilter />}>
       <Responsive
@@ -58,7 +60,11 @@ const AnswerList = props => {
             <ReferenceField label="Question" source="QuestionId" reference="questions" target="id" linkType={false}>
                <TextField source="title" />
             </ReferenceField>
-            <ImageField label="Image" source="image_url" />
+            <FormDataConsumer>
+                {({ record }) =>
+                  <img src={baseURL + record.image_url} alt="Answer" width="200px" />
+                }
+            </FormDataConsumer>
             <TextField label="Commentaire" source="comment" />
           </Datagrid>
         }

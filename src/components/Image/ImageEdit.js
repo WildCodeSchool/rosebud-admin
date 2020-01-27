@@ -60,6 +60,8 @@ const ImageEdit = withStyles(styles)(({ classes, ...props }) => {
   const [currentImage, setCurrentImage] = useState(true);
   const [currentImageUrl, setCurrentImageUrl] = useState(null);
 
+  const baseURL = process.env.REACT_APP_API_URL || '';
+  
   return (
     (QuestionId && QuestionnaireId) ? (
       <Edit  {...props} actions={<TopToolbar><BackButton linkBack={redirect} titleBack="Annuler" /></TopToolbar>}>
@@ -84,7 +86,11 @@ const ImageEdit = withStyles(styles)(({ classes, ...props }) => {
             {({ formData }) => formData.image_url.src ? setCurrentImage(false) : setCurrentImageUrl(formData.image_url)}
           </FormDataConsumer>
           {currentImage && (
-            <ImageField source="image_url" label={false} />
+          <FormDataConsumer>
+              {({ record }) =>
+              <img src={baseURL + record.image_url} alt="Answer" width="200px" />
+              }
+          </FormDataConsumer>
           )}
           {currentImageUrl && currentImage && (
             <TextInput source="currentImage" value={currentImageUrl} label={false} className={classes.hidden} />
