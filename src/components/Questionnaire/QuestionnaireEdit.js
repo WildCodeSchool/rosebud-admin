@@ -29,7 +29,7 @@ const QuestionnaireEdit = props => {
           <TextInput autoComplete="off" multiline label="Titre du questionnaire" source="title" fullWidth validate={required()}  />
           <TextInput autoComplete="off" multiline label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
           <TextInput autoComplete="off" multiline label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
-          <BooleanInput label="Questionnaire grand public" source="defaultQuestionnaire" fullWidth />
+          <BooleanInput label="Publié" source="isOnline" fullWidth defaultValue={false} />
       </SimpleForm>
     </Edit>
   );
