@@ -8,6 +8,7 @@ import {
   TextField,
   ReferenceField,
   ShowButton,
+  BooleanField,
   Filter,
   ReferenceInput,
   SelectInput
@@ -48,6 +49,7 @@ const QuestionnaireList = withStyles(styles)(({ classes, ...props }) => (
           <ReferenceField label="Administrateur" source="UserId" reference="users" target="id" link={false}>
               <TextField source="username" />
           </ReferenceField>
+          <BooleanField label="Images publiques" source="defaultQuestionnaire" />
           <ShowButton />
         </Datagrid>
       }
