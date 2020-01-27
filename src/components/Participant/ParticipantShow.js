@@ -49,7 +49,7 @@ const ParticipantShow = props => {
                 <ReferenceField label="Question" source="QuestionId" reference="questions" target="id" linkType={false}>
                   <TextField source="title" />
                 </ReferenceField>
-                <ImageField basePath={baseURL} source="image_url" label="Image" />
+                <ImageField source={`${baseURL}image_url`} label="Image" />
                 <TextField source="comment" label="Commentaire" />
               </Datagrid>
             </ReferenceManyField>
