@@ -13,9 +13,30 @@ import {
   SelectInput,
   downloadCSV,
   TextField,
-  BooleanField
+  BooleanField,
+  Pagination
 } from 'react-admin';
 import jsonExport from 'jsonexport/dist';
+
+const CustomList = () => {
+    const [page, setPage] = useState(1);
+    const perPage = 50;
+    const { data, total, loading, error } = useQuery({
+        type: 'GET_LIST',
+        resource: 'posts',
+        payload: {
+            pagination: { page, perPage },
+            sort: { field: 'id', order: 'ASC' },
+            filter: {},
+        }
+    });
+
+    if (loading) {
+        return <Loading />
+    }
+    if (error) {
+        return <p>ERROR: {error}</p>
+    }
 
 const ParticipantList = props => {
   
@@ -59,9 +80,11 @@ const QuestionsFilter = (props) => (
     />
   </Filter>
 );
+
+const PostPagination = props => <Pagination rowsPerPageOptions={[2, 5, 16, 22]} {...props} />;
   
   return (
-    <List {...props} bulkActionButtons={false} exporter={exporter} filters={<QuestionsFilter />}>
+    <List {...props} bulkActionButtons={false} exporter={exporter} filters={<QuestionsFilter />} pagination={<PostPagination />}>
       <Responsive
         small={
           <SimpleList
@@ -96,10 +119,16 @@ const QuestionsFilter = (props) => (
             <EmailField label="Email" source="email" fullWidth />
             <BooleanField label="En ligne" source="isApproved" fullWidth />
           </Datagrid>
+          <Pagination
+          page={page}
+          perPage={perPage}
+          setPage={setPage}
+          total={total}>
+          </Pagination>
         }
-      />
+        />
     </List>
-  )
+  )}
 };
 
 export default ParticipantList;
