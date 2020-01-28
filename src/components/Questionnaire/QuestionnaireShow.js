@@ -105,6 +105,7 @@ return (
               <FormDataConsumer>
               {({ record }) => <ModerateButton partipantId={record.id} questionnaireId={props.id} />}
               </FormDataConsumer>
+              <DeleteButton undoable={false} redirect="" />
             </Datagrid>
           </ReferenceManyField>
         </SimpleForm>
