@@ -53,7 +53,7 @@ const ParticipantShow = props => {
                 </ReferenceField>
                 <FormDataConsumer>
                     {({ record }) =>
-                    <img src={baseURL ? baseURL + record.image_url : record.image_url } alt="Answer" width="200px" />
+                    <img src={record.image_url.includes(baseURL) ? record.image_url : baseURL + record.image_url} alt="Answer" width="200px" />
                     }
                 </FormDataConsumer>
                 <TextField source="comment" label="Commentaire" />
