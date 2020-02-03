@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import api from '../../api';
 import {
   Create,
   TextInput,
@@ -12,7 +13,7 @@ import {
 import BackButton from '../../BackButton';
 
 const QuestionnaireCreate = props => {
-  
+
   return (
     <Create {...props} actions={<TopToolbar><BackButton linkBack={`/questionnaires`} titleBack="Annuler"/></TopToolbar>}>
       <SimpleForm 
@@ -30,7 +31,7 @@ const QuestionnaireCreate = props => {
         <TextInput autoComplete="off" label="Titre" source="title" fullWidth validate={required()} />
         <TextInput multiline autoComplete="off" label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
         <TextInput multiline autoComplete="off" label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
-        <BooleanInput label="Publié" source="isOnline" fullWidth defaultValue={false} />
+        <p fullWidth>Ce questionnaire doit contenir au minimum 3 questions pour être rendu public.</p>
       </SimpleForm>
     </Create>
   );
