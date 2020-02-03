@@ -50,6 +50,7 @@ const QuestionnaireList = withStyles(styles)(({ classes, ...props }) => (
               <TextField source="username" />
           </ReferenceField>
           <BooleanField label="En ligne" source="isOnline" />
+          <BooleanField label="Privé" source="isPrivate" />
           <ShowButton />
         </Datagrid>
       }

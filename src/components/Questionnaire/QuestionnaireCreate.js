@@ -31,6 +31,7 @@ const QuestionnaireCreate = props => {
         <TextInput multiline autoComplete="off" label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
         <TextInput multiline autoComplete="off" label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
         <BooleanInput label="Publié" source="isOnline" fullWidth defaultValue={false} />
+        <BooleanInput label="Privé" source="isPrivate" fullWidth defaultValue={false} />
       </SimpleForm>
     </Create>
   );
