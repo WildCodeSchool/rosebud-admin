@@ -87,8 +87,8 @@ return (
           <TextField label="Titre du questionnaire" source="title" />
           <TextField label="Texte de présentation du questionnaire" source="participationText" />
           <TextField label="Texte de présentation du mur d'images" source="presentationText" />
-          <BooleanField label="Publié" source="isOnline" defaultValue={false} />
           <BooleanField label="Privé" source="isPrivate" defaultValue={false} />
+          <BooleanField label="Publié" source="isOnline" defaultValue={false} />
         </SimpleForm>
       </Tab>
       <Tab label="Questions" path="questions">
