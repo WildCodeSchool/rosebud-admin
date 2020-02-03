@@ -34,14 +34,7 @@ const QuestionnaireToolbar = props => (
 );
 
 const QuestionsToolbar = props => {
-
-  const [connect] = useMutation({
-    type: 'update',
-    resource: 'questionnaires',
-    payload: { id: props.record.id, data: { isOnline: true } }
-  });
-
-  const [disconnect] = useMutation({
+  const [isOffline] = useMutation({
     type: 'update',
     resource: 'questionnaires',
     payload: { id: props.record.id, data: { isOnline: false } }
@@ -53,27 +46,24 @@ const QuestionsToolbar = props => {
     const fetchQuestionsCounter = async () => {
       const result = await api.get(`/api/back/v1/metrics/questions/${props.record.id}`);
       setQuestionsCounter(result.data);
-      (result.data < 3) ? disconnect() : connect();
+      (result.data < 3) && isOffline();
     }
     fetchQuestionsCounter();
-  }, [questionsCounter, disconnect, connect, props.record.id])
+  }, [questionsCounter, isOffline, props.record.id])
 
   const maxQuestions = (nbQuestions) => {
-    console.log(nbQuestions)
-    if(nbQuestions >= 3 && nbQuestions < 5){
-      return <AddQuestionButton />
-    } else if (nbQuestions < 3) {
-      return <AddQuestionButton message="Nombre minimum de questions : 3" />
-    } else {
-      return (
-        <p>Nombre maximum de questions : 5</p>
-      )
-    } 
-  }
+      if(nbQuestions < 5){
+        return <AddQuestionButton />
+      } else {
+        return (
+          <p>Nombre maximum de questions : 5</p>
+        )
+      } 
+    }
 
   return (
   <Toolbar {...props}>
-    {questionsCounter && maxQuestions(questionsCounter)}
+    {questionsCounter !== null && maxQuestions(questionsCounter)}
   </Toolbar>
   )
 };
