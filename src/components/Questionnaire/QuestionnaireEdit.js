@@ -15,7 +15,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   textWarning: {
-      color: 'red',
+    color: 'red',
+    fontSize: '13px',
+    textAlign: 'right',
   },
 });
 
