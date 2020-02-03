@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import api from '../../api';
 import {
   Edit,
   TextInput,
@@ -12,6 +13,26 @@ import {
 import BackButton from '../../BackButton';
 
 const QuestionnaireEdit = props => {
+  const [ questionsCounter, setQuestionsCounter ] = useState(null);
+
+  useEffect(() => {
+    const fetchQuestionsCounter = async () => {
+      const result = await api.get(`/api/back/v1/metrics/questions/${props.id}`);
+      setQuestionsCounter(result.data);
+    }
+    fetchQuestionsCounter();
+  }, [props.id])
+
+  const questionsCondition = (nbQuestions) => {
+    if(nbQuestions >= 3 && nbQuestions <= 5){
+      return <BooleanInput label="Publié" source="isOnline" fullWidth defaultValue={false} />
+    } else {
+      return (
+        <p fullWidth>Ce questionnaire doit contenir au minimum 3 questions pour être rendu public.</p>
+      )
+    } 
+  }
+
   return (
     <Edit {...props} actions={<TopToolbar><BackButton linkBack={`${props.location.pathname}/show`} titleBack="Annuler"/></TopToolbar>}>
       <SimpleForm
@@ -29,7 +50,7 @@ const QuestionnaireEdit = props => {
           <TextInput autoComplete="off" multiline label="Titre du questionnaire" source="title" fullWidth validate={required()}  />
           <TextInput autoComplete="off" multiline label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
           <TextInput autoComplete="off" multiline label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
-          <BooleanInput label="Publié" source="isOnline" fullWidth defaultValue={false} />
+          {questionsCondition && questionsCondition(questionsCounter)}
           <BooleanInput label="Privé" source="isPrivate" fullWidth defaultValue={false} />
       </SimpleForm>
     </Edit>
