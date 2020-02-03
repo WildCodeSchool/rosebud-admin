@@ -38,7 +38,7 @@ const QuestionnaireCreate = props => {
         <TextInput multiline autoComplete="off" label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
         <TextInput multiline autoComplete="off" label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
         <BooleanInput label="Privé" source="isPrivate" fullWidth defaultValue={false} />
-        <p className={classes.textWarning} fullWidth>Ce questionnaire doit contenir au minimum 3 questions pour être rendu public.</p>
+        <p className={classes.textWarning} fullWidth>Un questionnaire doit contenir au minimum 3 questions pour être rendu public.</p>
       </SimpleForm>
     </Create>
   );
