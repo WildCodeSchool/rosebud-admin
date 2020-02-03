@@ -11,8 +11,17 @@ import {
   TopToolbar
 } from 'react-admin';
 import BackButton from '../../BackButton';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  textWarning: {
+      color: 'red',
+  },
+});
 
 const QuestionnaireEdit = props => {
+  const classes = useStyles();
+
   const [ questionsCounter, setQuestionsCounter ] = useState(null);
 
   useEffect(() => {
@@ -28,7 +37,7 @@ const QuestionnaireEdit = props => {
       return <BooleanInput label="Publié" source="isOnline" fullWidth defaultValue={false} />
     } else {
       return (
-        <p fullWidth>Ce questionnaire doit contenir au minimum 3 questions pour être rendu public.</p>
+        <p className={classes.textWarning} fullWidth>Ce questionnaire doit contenir au minimum 3 questions pour être rendu public.</p>
       )
     } 
   }
@@ -50,8 +59,8 @@ const QuestionnaireEdit = props => {
           <TextInput autoComplete="off" multiline label="Titre du questionnaire" source="title" fullWidth validate={required()}  />
           <TextInput autoComplete="off" multiline label="Texte de présentation du questionnaire" source="participationText" fullWidth validate={required()} />
           <TextInput autoComplete="off" multiline label="Texte de présentation du mur d'images" source="presentationText" fullWidth validate={required()} />
-          {questionsCondition && questionsCondition(questionsCounter)}
           <BooleanInput label="Privé" source="isPrivate" fullWidth defaultValue={false} />
+          {questionsCondition && questionsCondition(questionsCounter)}
       </SimpleForm>
     </Edit>
   );
