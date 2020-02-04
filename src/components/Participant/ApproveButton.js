@@ -13,7 +13,7 @@ const ApproveButton = ({ participantId, redirect }) => {
     
     const [redirectAction, setRedirectAction] = useState(false);
     
-    const sendEmail = axios.post(`/api/back/v1/participants/${participantId}/approved`);
+    const sendEmail = async () => await axios.post(`/api/back/v1/participants/${participantId}/approved`);
 
     return (
         <>
