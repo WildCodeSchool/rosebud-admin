@@ -24,8 +24,16 @@ import AddQuestionButton from './AddQuestionButton';
 import EditQuestionButton from './EditQuestionButton';
 import ShowImagesButton from './ShowImagesButton';
 import ModerateButton from './ModerateButton';
-
 import BackButton from '../../BackButton';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  privateUrl: {
+    fontSize: '13px',
+    marginBottom: '20px',
+    display: 'block',
+  },
+});
 
 const QuestionnaireToolbar = props => (
   <Toolbar {...props}>
@@ -75,12 +83,20 @@ const QuestionnaireTopToolbar = () => (
 );
  
 const QuestionnaireShow = props => {  
-
+  const classes = useStyles();
 return (
 <Show {...props} actions={<QuestionnaireTopToolbar />}>
     <TabbedShowLayout>
       <Tab label="Configuration">
         <SimpleForm toolbar={<QuestionnaireToolbar />}>
+          <a
+            className={classes.privateUrl}
+            href={`https://rosebud.website/questionnaire/${props.id}`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {`https://rosebud.website/questionnaire/${props.id}`}
+          </a>
           <ReferenceField label="Administrateur" resource="users" source="UserId" reference="users" link={false}>
             <TextField source="username" />
           </ReferenceField>
