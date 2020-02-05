@@ -6,6 +6,7 @@ import {
   SelectInput,
   ReferenceInput,
   TopToolbar,
+  BooleanInput,
   required
 } from 'react-admin';
 import BackButton from '../../BackButton';
