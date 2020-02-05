@@ -17,28 +17,29 @@ import {
 } from 'react-admin';
 import jsonExport from 'jsonexport/dist';
 
+
 const ParticipantList = props => {
   
   const exporter = (records, fetchRelatedRecords) => {
-  fetchRelatedRecords(records, 'id', 'participants').then(participants => {
-    const data = records.map(record => ({
-              id: participants[record.id].id,
-              prenom: participants[record.id].firstName,
-              nom: participants[record.id].lastName,
-              statut: participants[record.id].status,
-              age: participants[record.id].age,
-              ville: participants[record.id].city,
-              email: participants[record.id].email,
-              approve: participants[record.id].isApproved,
+    fetchRelatedRecords(records, 'id', 'participants').then(participants => {
+      const data = records.map(record => ({
+        id: participants[record.id].id,
+        prenom: participants[record.id].firstName,
+        nom: participants[record.id].lastName,
+        statut: participants[record.id].status,
+        age: participants[record.id].age,
+        ville: participants[record.id].city,
+        email: participants[record.id].email,
+        approve: participants[record.id].isApproved,
       }));
       jsonExport(data, {
-          headers: ['id', 'prenom', 'nom', 'statut', 'age', 'ville', 'email', 'approve'],
+        headers: ['id', 'prenom', 'nom', 'statut', 'age', 'ville', 'email', 'approve'],
       }, (err, csv) => {;
-          downloadCSV(csv, 'participants');
+        downloadCSV(csv, 'participants');
       });
-  });
-};
-
+    });
+  };
+  
 const QuestionsFilter = (props) => (
   <Filter {...props}>
     <ReferenceInput

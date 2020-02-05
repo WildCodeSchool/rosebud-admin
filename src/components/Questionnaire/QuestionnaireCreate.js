@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import api from '../../api';
+import React from 'react';
 import {
   Create,
   TextInput,
@@ -7,7 +6,6 @@ import {
   SelectInput,
   ReferenceInput,
   TopToolbar,
-  BooleanInput,
   required
 } from 'react-admin';
 import BackButton from '../../BackButton';

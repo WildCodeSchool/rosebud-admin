@@ -7,7 +7,6 @@ import {
   ReferenceField,
   SimpleForm,
   Datagrid,
-  ImageField,
   TopToolbar,
   FormDataConsumer,
   Toolbar,
